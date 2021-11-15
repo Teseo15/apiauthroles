@@ -27,13 +27,13 @@ export const isModerator = async (req, res, next) => {
     const roles = await Role.find({ _id: { $in: user.roles } });
 
     for (let i = 0; i < roles.length; i++) {
-      if (roles[i].name === "moderator") {
+      if (roles[i].name === "director") {
         next();
         return;
       }
     }
 
-    return res.status(403).json({ message: "Require Moderator Role!" });
+    return res.status(403).json({ message: "Require director Role!" });
   } catch (error) {
     console.log(error)
     return res.status(500).send({ message: error });
