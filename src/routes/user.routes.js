@@ -13,5 +13,8 @@ router.post(
   ],
   usersCtrl.createUser
 );
-
+router.get("/",usersCtrl.getUsers);
+router.get("/:id",usersCtrl.getUser);
+router.put("/:id",[authJwt.verifyToken],usersCtrl.updateUserById);
+router.delete('/:id',[authJwt.verifyToken],usersCtrl.deleteUserById);
 export default router;

@@ -32,6 +32,23 @@ export const createUser = async (req, res) => {
   }
 };
 
-export const getUsers = async (req, res) => {};
+export const getUsers = async (req, res) => {
+  const users = await User.find();
+  res.json(users);
+};
 
-export const getUser = async (req, res) => {};
+export const getUser = async (req, res) => {
+  const user = await User.findById(req.params.id);
+  res.status(200).json(user);
+};
+
+export const updateUserById = async (req,res) =>{
+  const update = await User.findByIdAndUpdate(
+      req.params.id, req.body,{new: true});
+  res.status(200).json(update);
+};
+export const deleteUserById = async (req,res) =>{
+  await User.findByIdAndDelete(req.params.id)
+  res.status(204).json()
+}
+
