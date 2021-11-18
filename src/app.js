@@ -8,9 +8,10 @@ import pkg from "../package.json";
 import productRoutes from "./routes/products.routes";
 import usersRoutes from "./routes/user.routes";
 import authRoutes from "./routes/auth.routes";
-
-import { createRoles, createAdmin} from "./libs/initialSetup";
 import storiesRouter from "./routes/stories.routes";
+import commentsRouter from "./routes/comment.routes";
+import { createRoles, createAdmin} from "./libs/initialSetup";
+
 
 const app = express();
 createRoles();
@@ -47,4 +48,5 @@ app.use("/api/products", productRoutes);
 app.use("/api/users", usersRoutes);
 app.use("/api/auth", authRoutes);
 app.use('/api/stories',storiesRouter)
+app.use('/api/comments',commentsRouter)
 export default app;
